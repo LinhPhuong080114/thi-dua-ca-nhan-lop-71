@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THI DUA LOP 71 - 35 HOC SINH</title>
+    <title>THI DUA LOP 71 - 35 HỌC SINH</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -104,7 +104,8 @@
             </div>
         </div>
 
-          <section class="space-y-4" id="cardsGrid">
+        <!-- Leaderboard Team Cards -->
+        <section class="space-y-4" id="cardsGrid">
             <!-- Dynamic Cards -->
         </section>
 
@@ -112,17 +113,17 @@
         <section class="bg-chalkBoard rounded-2xl p-4 sm:p-6 shadow-xl border border-emerald-800 space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-emerald-800/80">
                 <h3 class="text-lg font-bold text-amber-300 flex items-center gap-2">
-                    <i class="fa-solid fa-flag-checkered"></i> Đường Đua 35 Cá Nhân
+                    <i class="fa-solid fa-flag-checkered"></i> Đường Đua 35 Học Sinh
                 </h3>
             </div>
 
-            <!-- Tracks Container (Scrollable for 35 tracks) -->
+            <!-- Tracks Container -->
             <div class="space-y-3 max-h-[500px] overflow-y-auto pr-2" id="tracksContainer">
                 <!-- Dynamic Tracks -->
             </div>
         </section>
 
-        <!-- Announcement Section (Thông Báo Từ Quản Trị Viên) -->
+        <!-- Announcement Section -->
         <section class="bg-chalkBoard rounded-2xl p-4 sm:p-6 shadow-xl border border-emerald-800 space-y-3">
             <div class="flex items-center justify-between border-b border-emerald-800/80 pb-3">
                 <h3 class="text-lg font-bold text-amber-300 flex items-center gap-2">
@@ -152,7 +153,7 @@
         <section class="bg-chalkBoard rounded-2xl p-4 sm:p-6 shadow-xl border border-emerald-800 space-y-3">
             <div class="flex items-center justify-between border-b border-emerald-800/80 pb-3">
                 <h3 class="text-lg font-bold text-amber-300 flex items-center gap-2">
-                    <i class="fa-solid fa-clock-rotate-left"></i> Lịch Sử Cộng / Trừ điểm
+                    <i class="fa-solid fa-clock-rotate-left"></i> Lịch Sử Cộng / Trừ Điểm
                 </h3>
                 <button id="clearHistoryBtn" class="hidden px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 text-xs font-bold transition border border-rose-500/40">
                     <i class="fa-solid fa-trash-can"></i> Xóa Lịch Sử
@@ -163,21 +164,21 @@
             </div>
         </section>
 
-        <!-- Admin Control Panel (Cập nhật điểm nhanh theo STT & Đổi tên người) -->
+        <!-- Admin Control Panel -->
         <section id="adminPanel" class="hidden bg-slate-900 rounded-2xl p-5 sm:p-6 text-white shadow-2xl space-y-6 border border-amber-500/30">
             <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
                 <div>
                     <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
-                        <i class="fa-solid fa-sliders"></i> Bảng Điều Khiển Quản Trị (35 Người)
+                        <i class="fa-solid fa-sliders"></i> Bảng Điều Khiển Quản Trị (35 Học Sinh)
                     </h3>
-                    <p class="text-xs text-slate-400 mt-0.5">Chọn STT người, nhập số điểm cần cộng/trừ và đổi tên các hs dễ dàng.</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Chọn STT học sinh, nhập số điểm cần cộng/trừ và đổi tên danh sách dễ dàng.</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
                     <button id="changePinBtn" class="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 text-xs font-bold transition border border-amber-500/40">
                         <i class="fa-solid fa-key"></i> Đổi Mật Mã Admin
                     </button>
                     <button id="resetAllBtn" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 text-xs font-bold transition border border-rose-500/40">
-                        <i class="fa-solid fa-rotate-left"></i> Đặt Lại 100 điểm
+                        <i class="fa-solid fa-rotate-left"></i> Đặt Lại 100 Điểm
                     </button>
                     <button id="logoutAdminBtn" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 text-xs font-bold transition border border-slate-700">
                         Thoát Admin
@@ -185,7 +186,6 @@
                 </div>
             </div>
 
-            <!-- Admin Controls Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="adminControlsGrid">
                 <!-- Rendered via JS -->
             </div>
@@ -266,7 +266,7 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const appId = 'thi-dua-lop-71-35-to-2025-2026';
+        const appId = 'thi-dua-ca-nhan-lop-71-v2';
 
         const firebaseConfig = {
           apiKey: "AIzaSyCQF4C0DcSce_bNDOBhj6KbsjFnrCJjRXI",
@@ -277,10 +277,10 @@
           appId: "1:384461302475:web:c2db4957b0678f0299894e"
         };
 
-        // Khởi tạo mặc định 35 học sinh
         const iconsList = ["🦆", "🐥", "🦢", "🦩"];
         const palette = ["#FBC02D", "#EC4899", "#38BDF8", "#C084FC", "#34D399", "#F87171", "#818CF8", "#F472B6", "#4ADE80", "#FBBF24"];
         
+        // Mặc định tên là Học Sinh Số 1 đến 35
         const DEFAULT_TEAMS = Array.from({ length: 35 }, (_, i) => ({
             id: i + 1,
             label: `Học Sinh Số ${i + 1}`,
@@ -399,7 +399,6 @@
             } catch (err) {}
         }
 
-        // Hàm xử lý cộng/trừ nhanh điểm theo STT
         window.applyQuickPoints = function(isSubtract = false) {
             if (!state.isAdmin) return;
             const select = document.getElementById('quickTeamSelect');
@@ -452,14 +451,13 @@
             showToast(`Đã ${val > 0 ? 'cộng' : 'trừ'} điểm cho ${targetTeam.label}!`, "success");
         };
 
-        // Hàm đổi tên học sinh
         window.updateTeamName = function(teamId) {
             if (!state.isAdmin) return;
             const input = document.getElementById(`renameInput-${teamId}`);
             if (!input) return;
             const newName = input.value.trim();
             if (!newName) {
-                showToast("Tên học sinh không được để trống!", "error");
+                showToast("Tên không được để trống!", "error");
                 return;
             }
 
@@ -471,7 +469,7 @@
             });
 
             saveRaceState(updatedTeams, state.history, state.announcements, state.adminPin, state.mySessionId);
-            showToast(`Đã đổi tên Học Sinh ${teamId} thành "${newName}"!`, "success");
+            showToast(`Đã đổi tên học sinh STT ${teamId} thành "${newName}"!`, "success");
         };
 
         window.deleteAnnouncement = function(id) {
@@ -492,7 +490,6 @@
             renderAdminPanel();
         }
 
-        // Bảng xếp hạng: Hạng 1 to nhất (1 hàng), Hạng 2 & 3 (hàng 2), Các hạng còn lại nhỏ hơn
         function renderCards() {
             const container = document.getElementById('cardsGrid');
             const sorted = [...state.teams].sort((a, b) => b.steps - a.steps);
@@ -504,7 +501,6 @@
 
             let html = '';
 
-            // Hạng 1
             if (top1) {
                 html += `
                     <div class="bg-gradient-to-r from-amber-500/20 via-chalkBoard to-amber-500/20 rounded-2xl p-5 sm:p-6 border-2 border-amber-400 shadow-xl flex items-center justify-between">
@@ -523,7 +519,6 @@
                 `;
             }
 
-            // Hạng 2 và 3 (Hàng 2)
             html += `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">`;
             [top2, top3].forEach((team, idx) => {
                 if (!team) return;
@@ -549,7 +544,6 @@
             });
             html += `</div>`;
 
-            // Các hạng tiếp theo (4 - 35)
             if (rest.length > 0) {
                 html += `
                     <div class="bg-chalkBoard rounded-2xl p-4 border border-emerald-800 shadow-md space-y-3">
@@ -585,7 +579,7 @@
                                 <span class="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0" style="background-color: ${team.color}"></span>
                                 <span class="truncate">${team.label} (STT ${team.id})</span>
                             </span>
-                            <span class="text-amber-300 font-mono text-xs flex-shrink-0">${team.steps} điểm</span>
+                            <span class="text-amber-300 font-mono text-xs flex-shrink-0">${team.steps} Điểm</span>
                         </div>
 
                         <div class="relative h-10 bg-chalkSoft/50 rounded-lg border border-emerald-700/50 flex items-center px-3 overflow-hidden">
@@ -699,7 +693,6 @@
             `).join('');
 
             grid.innerHTML = `
-                <!-- Form Cộng Trừ Nhanh Theo STT -->
                 <div class="bg-slate-950 rounded-xl p-4 border border-slate-800 space-y-4">
                     <h4 class="text-sm font-bold text-amber-400 flex items-center gap-2">
                         <i class="fa-solid fa-calculator"></i> Cộng / Trừ Điểm Nhanh Theo STT
@@ -732,7 +725,6 @@
                     </div>
                 </div>
 
-                <!-- Form Đổi Tên Các Học Sinh (1 - 35) -->
                 <div class="bg-slate-950 rounded-xl p-4 border border-slate-800 space-y-3">
                     <div class="flex items-center justify-between">
                         <h4 class="text-sm font-bold text-sky-400 flex items-center gap-2">
@@ -747,7 +739,6 @@
             `;
         }
 
-        // Xử lý gửi thông báo
         const sendNoticeForm = document.getElementById('sendNoticeForm');
         const noticeInput = document.getElementById('noticeInput');
 
@@ -783,7 +774,6 @@
             }
         });
 
-        // Admin Auth Logic
         const adminToggleBtn = document.getElementById('adminToggleBtn');
         const pinModal = document.getElementById('pinModal');
         const cancelPinBtn = document.getElementById('cancelPinBtn');
@@ -850,7 +840,6 @@
             showToast("Đã thoát Quản Trị Viên", "info");
         });
 
-        // Change PIN
         const changePinBtn = document.getElementById('changePinBtn');
         const changePinModal = document.getElementById('changePinModal');
         const cancelChangePinBtn = document.getElementById('cancelChangePinBtn');
@@ -893,7 +882,6 @@
             showToast("Đã đổi mật mã Admin thành công!", "success");
         });
 
-        // Reset 100 Steps
         const resetAllBtn = document.getElementById('resetAllBtn');
         resetAllBtn.addEventListener('click', () => {
             if (!state.isAdmin) return;
@@ -915,7 +903,6 @@
             }
         });
 
-        // Clear History
         const clearHistoryBtn = document.getElementById('clearHistoryBtn');
         clearHistoryBtn.addEventListener('click', () => {
             if (!state.isAdmin) return;
@@ -925,7 +912,6 @@
             }
         });
 
-        // Share Link
         const shareBtn = document.getElementById('shareBtn');
         shareBtn.addEventListener('click', () => {
             const url = window.location.href;
