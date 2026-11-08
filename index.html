@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THI DUA LOP 71 - 35 TO</title>
+    <title>THI DUA LOP 71 - 35 HOC SINH</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -63,7 +63,7 @@
                     🦆
                 </div>
                 <div>
-                    <h1 class="text-xl sm:text-2xl font-bold text-amber-300 tracking-wide">ĐUA VỊT - THI ĐUA 35 TỔ</h1>
+                    <h1 class="text-xl sm:text-2xl font-bold text-amber-300 tracking-wide">ĐUA VỊT - THI ĐUA 35 HS</h1>
                 </div>
             </div>
 
@@ -104,8 +104,7 @@
             </div>
         </div>
 
-        <!-- Leaderboard Team Cards (Hạng 1 to nhất, Hạng 2 & 3, Các hạng còn lại) -->
-        <section class="space-y-4" id="cardsGrid">
+          <section class="space-y-4" id="cardsGrid">
             <!-- Dynamic Cards -->
         </section>
 
@@ -113,7 +112,7 @@
         <section class="bg-chalkBoard rounded-2xl p-4 sm:p-6 shadow-xl border border-emerald-800 space-y-4">
             <div class="flex items-center justify-between pb-3 border-b border-emerald-800/80">
                 <h3 class="text-lg font-bold text-amber-300 flex items-center gap-2">
-                    <i class="fa-solid fa-flag-checkered"></i> Đường Đua 35 Tổ
+                    <i class="fa-solid fa-flag-checkered"></i> Đường Đua 35 Cá Nhân
                 </h3>
             </div>
 
@@ -153,7 +152,7 @@
         <section class="bg-chalkBoard rounded-2xl p-4 sm:p-6 shadow-xl border border-emerald-800 space-y-3">
             <div class="flex items-center justify-between border-b border-emerald-800/80 pb-3">
                 <h3 class="text-lg font-bold text-amber-300 flex items-center gap-2">
-                    <i class="fa-solid fa-clock-rotate-left"></i> Lịch Sử Cộng / Trừ Bước
+                    <i class="fa-solid fa-clock-rotate-left"></i> Lịch Sử Cộng / Trừ điểm
                 </h3>
                 <button id="clearHistoryBtn" class="hidden px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 text-xs font-bold transition border border-rose-500/40">
                     <i class="fa-solid fa-trash-can"></i> Xóa Lịch Sử
@@ -164,21 +163,21 @@
             </div>
         </section>
 
-        <!-- Admin Control Panel (Cập nhật điểm nhanh theo STT & Đổi tên tổ) -->
+        <!-- Admin Control Panel (Cập nhật điểm nhanh theo STT & Đổi tên người) -->
         <section id="adminPanel" class="hidden bg-slate-900 rounded-2xl p-5 sm:p-6 text-white shadow-2xl space-y-6 border border-amber-500/30">
             <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
                 <div>
                     <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
-                        <i class="fa-solid fa-sliders"></i> Bảng Điều Khiển Quản Trị (35 Tổ)
+                        <i class="fa-solid fa-sliders"></i> Bảng Điều Khiển Quản Trị (35 Người)
                     </h3>
-                    <p class="text-xs text-slate-400 mt-0.5">Chọn STT tổ, nhập số điểm cần cộng/trừ và đổi tên các tổ dễ dàng.</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Chọn STT người, nhập số điểm cần cộng/trừ và đổi tên các hs dễ dàng.</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
                     <button id="changePinBtn" class="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 text-xs font-bold transition border border-amber-500/40">
                         <i class="fa-solid fa-key"></i> Đổi Mật Mã Admin
                     </button>
                     <button id="resetAllBtn" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 text-xs font-bold transition border border-rose-500/40">
-                        <i class="fa-solid fa-rotate-left"></i> Đặt Lại 100 Bước
+                        <i class="fa-solid fa-rotate-left"></i> Đặt Lại 100 điểm
                     </button>
                     <button id="logoutAdminBtn" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 text-xs font-bold transition border border-slate-700">
                         Thoát Admin
@@ -278,13 +277,13 @@
           appId: "1:384461302475:web:c2db4957b0678f0299894e"
         };
 
-        // Khởi tạo mặc định 35 tổ
+        // Khởi tạo mặc định 35 học sinh
         const iconsList = ["🦆", "🐥", "🦢", "🦩"];
         const palette = ["#FBC02D", "#EC4899", "#38BDF8", "#C084FC", "#34D399", "#F87171", "#818CF8", "#F472B6", "#4ADE80", "#FBBF24"];
         
         const DEFAULT_TEAMS = Array.from({ length: 35 }, (_, i) => ({
             id: i + 1,
-            label: `Tổ ${i + 1}`,
+            label: `Học Sinh Số ${i + 1}`,
             color: palette[i % palette.length],
             steps: 100,
             icon: iconsList[i % iconsList.length]
@@ -411,7 +410,7 @@
             let val = parseInt(deltaInput.value, 10);
 
             if (isNaN(val) || val === 0) {
-                showToast("Vui lòng nhập số bước hợp lệ!", "error");
+                showToast("Vui lòng nhập số điểm hợp lệ!", "error");
                 return;
             }
 
@@ -450,17 +449,17 @@
             
             deltaInput.value = '';
             reasonInput.value = '';
-            showToast(`Đã ${val > 0 ? 'cộng' : 'trừ'} bước cho ${targetTeam.label}!`, "success");
+            showToast(`Đã ${val > 0 ? 'cộng' : 'trừ'} điểm cho ${targetTeam.label}!`, "success");
         };
 
-        // Hàm đổi tên tổ
+        // Hàm đổi tên học sinh
         window.updateTeamName = function(teamId) {
             if (!state.isAdmin) return;
             const input = document.getElementById(`renameInput-${teamId}`);
             if (!input) return;
             const newName = input.value.trim();
             if (!newName) {
-                showToast("Tên tổ không được để trống!", "error");
+                showToast("Tên học sinh không được để trống!", "error");
                 return;
             }
 
@@ -472,7 +471,7 @@
             });
 
             saveRaceState(updatedTeams, state.history, state.announcements, state.adminPin, state.mySessionId);
-            showToast(`Đã đổi tên Tổ ${teamId} thành "${newName}"!`, "success");
+            showToast(`Đã đổi tên Học Sinh ${teamId} thành "${newName}"!`, "success");
         };
 
         window.deleteAnnouncement = function(id) {
@@ -518,7 +517,7 @@
                         </div>
                         <div class="text-right">
                             <span class="text-3xl sm:text-5xl font-extrabold text-amber-300 font-mono">${top1.steps}</span>
-                            <span class="text-xs sm:text-sm text-emerald-400 font-bold block">bước</span>
+                            <span class="text-xs sm:text-sm text-emerald-400 font-bold block">điểm</span>
                         </div>
                     </div>
                 `;
@@ -543,7 +542,7 @@
                         </div>
                         <div class="text-right">
                             <span class="text-2xl font-bold ${textColor} font-mono">${team.steps}</span>
-                            <span class="text-xs text-emerald-400 font-bold">bước</span>
+                            <span class="text-xs text-emerald-400 font-bold">điểm</span>
                         </div>
                     </div>
                 `;
@@ -586,7 +585,7 @@
                                 <span class="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0" style="background-color: ${team.color}"></span>
                                 <span class="truncate">${team.label} (STT ${team.id})</span>
                             </span>
-                            <span class="text-amber-300 font-mono text-xs flex-shrink-0">${team.steps} Bước</span>
+                            <span class="text-amber-300 font-mono text-xs flex-shrink-0">${team.steps} điểm</span>
                         </div>
 
                         <div class="relative h-10 bg-chalkSoft/50 rounded-lg border border-emerald-700/50 flex items-center px-3 overflow-hidden">
@@ -666,7 +665,7 @@
                         <div class="flex items-center space-x-2.5">
                             <span class="text-emerald-400 font-mono text-[11px] bg-chalkBoard px-2 py-1 rounded border border-emerald-900">${item.time}</span>
                             <span class="font-bold text-white flex items-center gap-1">${item.teamIcon} ${item.teamLabel}</span>
-                            <span class="px-2 py-0.5 rounded font-bold border ${badgeColor}">${sign} bước</span>
+                            <span class="px-2 py-0.5 rounded font-bold border ${badgeColor}">${sign} điểm</span>
                         </div>
                         <div class="text-emerald-200 flex-1 sm:text-right">
                             <span class="italic text-slate-300">Lý do:</span> <span class="font-semibold text-white">${item.reason}</span> 
@@ -677,7 +676,6 @@
             }).join('');
         }
 
-        // Bảng điều khiển admin gọn gàng: Chọn STT cộng trừ + Đổi tên 35 tổ
         function renderAdminPanel() {
             const panel = document.getElementById('adminPanel');
             const grid = document.getElementById('adminControlsGrid');
@@ -689,7 +687,7 @@
 
             panel.classList.remove('hidden');
 
-            let teamOptions = state.teams.map(t => `<option value="${t.id}">${t.label} (STT ${t.id} - ${t.steps} bước)</option>`).join('');
+            let teamOptions = state.teams.map(t => `<option value="${t.id}">${t.label} (STT ${t.id} - ${t.steps} điểm)</option>`).join('');
             
             let renameHtml = state.teams.map(t => `
                 <div class="flex items-center gap-2 bg-slate-900 p-2 rounded-lg border border-slate-800">
@@ -708,13 +706,13 @@
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-[11px] font-bold text-slate-300 mb-1">Chọn Tổ / STT</label>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">Chọn Học Sinh / STT</label>
                             <select id="quickTeamSelect" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-lg p-2.5 focus:outline-none focus:border-amber-400">
                                 ${teamOptions}
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[11px] font-bold text-slate-300 mb-1">Số bước (+ hoặc -)</label>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">Số điểm (+ hoặc -)</label>
                             <input type="number" id="quickDeltaInput" placeholder="Ví dụ: 10 hoặc -5" 
                                 class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-lg p-2.5 focus:outline-none focus:border-amber-400">
                         </div>
@@ -734,11 +732,11 @@
                     </div>
                 </div>
 
-                <!-- Form Đổi Tên Các Tổ (1 - 35) -->
+                <!-- Form Đổi Tên Các Học Sinh (1 - 35) -->
                 <div class="bg-slate-950 rounded-xl p-4 border border-slate-800 space-y-3">
                     <div class="flex items-center justify-between">
                         <h4 class="text-sm font-bold text-sky-400 flex items-center gap-2">
-                            <i class="fa-solid fa-pen-to-square"></i> Đổi Tên 35 Tổ
+                            <i class="fa-solid fa-pen-to-square"></i> Đổi Tên 35 Học Sinh
                         </h4>
                         <span class="text-[11px] text-slate-400">Sửa tên và bấm Lưu</span>
                     </div>
@@ -899,7 +897,7 @@
         const resetAllBtn = document.getElementById('resetAllBtn');
         resetAllBtn.addEventListener('click', () => {
             if (!state.isAdmin) return;
-            if (confirm("Bạn có chắc chắn muốn đặt lại tất cả 35 tổ về 100 bước không?")) {
+            if (confirm("Bạn có chắc chắn muốn đặt lại tất cả 35 học sinh về 100 điểm không?")) {
                 const resetTeams = state.teams.map(t => ({ ...t, steps: 100 }));
                 const timeStr = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
                 const historyItem = {
@@ -908,12 +906,12 @@
                     teamLabel: "Hệ thống",
                     teamIcon: "⚙️",
                     delta: 0,
-                    reason: "Đặt lại toàn bộ 35 tổ về 100 bước",
+                    reason: "Đặt lại toàn bộ 35 học sinh về 100 điểm",
                     newTotal: 100
                 };
                 const updatedHistory = [historyItem, ...state.history].slice(0, 50);
                 saveRaceState(resetTeams, updatedHistory, state.announcements, state.adminPin, state.mySessionId);
-                showToast("Đã đặt lại toàn bộ 35 tổ về 100 bước!", "success");
+                showToast("Đã đặt lại toàn bộ 35 học sinh về 100 điểm!", "success");
             }
         });
 
